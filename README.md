@@ -1,6 +1,6 @@
-# _Title_
+# _Epicutters Salon_
 
-#### _Single-line Description, version number, date_
+#### _A web app for owners to manage freelance stylists and their clients, 2016-12-9_
 
 #### By _Michael Andrade, with thanks to Epicodus_
 
@@ -10,7 +10,10 @@ Description text
 
 ## Setup/Installation Requirements
 
-* Text
+*
+CREATE DATABASE hair_salon;
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id int);
 
 ## Known Bugs
 
@@ -22,16 +25,18 @@ For questions, ideas, or concerns, email me with the subject line "Github"!
 
 ## Technologies Used
 
+Backend written in Ruby, with PostgreSQL database and Javascript frontend.
+
 ### License
 
-This file is part of (Program Name).
+This file is part of Epicutters Salon.
 
-    (Program Name) is free software: you can redistribute it and/or modify
+    Epicutters Salon is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    (Program Name) is distributed in the hope that it will be useful,
+    Epicutters Salon is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
