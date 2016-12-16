@@ -1,6 +1,6 @@
 # _Epicutters Salon_
 
-#### _A web app for owners to manage freelance stylists and their clients, 2016-12-9_
+#### _A web app for owners to manage freelance stylists and their clients, v2.0 2016-12-15_
 
 #### By _Michael Andrade, with thanks to Epicodus_
 
