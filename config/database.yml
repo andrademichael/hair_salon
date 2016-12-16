@@ -1,5 +1,5 @@
 development:
-  adapter: postresql
+  adapter: postgresql
   database: hair_salon
 test:
   adapter: postgresql

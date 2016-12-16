@@ -89,6 +89,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler
   capybara
   pg
   pry
@@ -98,3 +99,6 @@ DEPENDENCIES
   sinatra
   sinatra-activerecord
   sinatra-contrib
+
+BUNDLED WITH
+   1.13.6
