@@ -6,3 +6,12 @@ describe("doing something", :type => :feature) do
     expect_some_other_stuff
   end
 end
+
+describe("adding a stylist") do
+  it "allows a manager to view all stylists and add new ones" do
+    visit('/')
+    fill_in('stylist_name', :with => "Tom Jones")
+    click_on('add stylist')
+    expect(page).to have_content("Tom Jones")
+  end
+end

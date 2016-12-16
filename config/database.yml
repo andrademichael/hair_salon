@@ -1,7 +1,6 @@
 development:
   adapter: postresql
-  database: hair_salon_development
-
+  database: hair_salon
 test:
   adapter: postgresql
   database: hair_salon_test
