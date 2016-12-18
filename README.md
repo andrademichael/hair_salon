@@ -26,9 +26,12 @@ In your README, include database setup instructions with your database names and
 
 In PSQL:
 
-CREATE DATABASE to_do;
-CREATE TABLE lists (id serial PRIMARY KEY, name varchar);
-CREATE TABLE tasks (id serial PRIMARY KEY, description varchar);
+CREATE DATABASE hair_salon;
+CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
+CREATE TABLE clients (id serial PRIMARY KEY, name varchar);
+
+
+
 Objectives
 Your code will be reviewed for the following objectives:
 
