@@ -3,9 +3,10 @@ source("https://rubygems.org")
 gem("sinatra")
 gem("sinatra-contrib", :require => "sinatra/reloader")
 gem("sinatra-activerecord")
+gem("activerecord")
 gem("pg")
 gem("rake")
-gem("bundler")
+gem("nokogiri")
 
 group(:test) do
   gem("rspec")
