@@ -1,9 +1,11 @@
-require("bundler/setup")
-Bundler.require(:default)
+require("sinatra")
+require("sinatra/reloader")
+also_reload("lib/**/*.rb")
+require("./lib/client")
+require("./lib/stylist")
+require("pg")
 
-Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
-
-DB = PG.connect((:dbname => "hair_salon"))
+DB = PG.connect({:dbname => "hair_salon"})
 
 get("/") do
   erb(:index)
@@ -15,39 +17,15 @@ get("/stylists") do
 end
 
 post("/stylists") do
-  name = params.fetch()
-  stylist = Stylist.new({:name => name, :id =>})
-  stylist.save()
-  @stylists = Stylist.all()
-  erb(:stylists)
-end
-
-get("/stylists") do
-  @stylists = Stylist.all()
-  erb(:stylists)
-endget("/stylists") do
-  @stylists = Stylist.all()
-  erb(:stylists)
-end
-
-post("/stylists") do
-  name = params.fetch()
-  stylist = Stylist.new({:name => name, :id =>})
-  stylist.save()
-  @stylists = Stylist.all()
-  erb(:stylists)
-end
-
-post("/stylists") do
-  name = params.fetch()
-  stylist = Stylist.new({:name => name, :id =>})
-  stylist.save()
+  new_name = params.fetch("name_input")
+  new_stylist = Stylist.new({:name => new_name})
+  new_stylist.save()
   @stylists = Stylist.all()
   erb(:stylists)
 end
 
 get("/stylists/:id") do
-  @stylist = Stylist.find(params.fetch("id").to_i())
+  @stylist =  Stylist.find(params.fetch("id").to_i())
   @clients = Client.all()
   erb(:stylist_view)
 end

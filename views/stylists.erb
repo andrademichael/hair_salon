@@ -1,16 +1,24 @@
 <h1>Stylist Management</h1>
 
 <% if @stylists.any? %>
-  <p>Stylists:</p>
-    <p>| <% @stylists.each() do |stylist| %>
+  <h3>Stylists:</h3>
+  <ul>
+    <% @stylists.each() do |stylist| %>
       <%= stylist.name() %>
-      <form action="/stylist/<%= stylist.id %>" method="post">
+      <li><form action="/stylist/<%= stylist.id %>" method="post">
         <button type="submit">x</button>
-        <input type="hidden" name="stylist_id" value="<%= @recipe.id %>">
+        <input type="hidden" name="stylist_id" value="<%= stylist.id %>">
         <input type="hidden" name="_method" value="delete">
-      </form> |
+      </form></li>
     <% end %>
-  </p>
+  </ul>
+
 <% else %>
-<p>No stylists added yet!</p>
+  <p>No stylists added yet!</p>
 <% end %>
+
+<form class="well" action="/stylists" method="post">
+  <label for="name_input">stylist name:</label>
+  <input type="text" name="name_input">
+  <button type="submit">add stylist</button>
+</form>
