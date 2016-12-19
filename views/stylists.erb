@@ -4,12 +4,7 @@
   <h3>Stylists:</h3>
   <ul>
     <% @stylists.each() do |stylist| %>
-
-      <li><a href="/stylist/<%= stylist.id() %>"><%= stylist.name() %></a><form action="/stylist/<%= stylist.id %>" method="post">
-        <button type="submit">x</button>
-        <input type="hidden" name="id" value="<%= stylist.id %>">
-        <input type="hidden" name="_method" value="delete">
-      </form></li>
+      <li><a href="/stylist/<%= stylist.id() %>"><%= stylist.name() %></a></li>
     <% end %>
   </ul>
 

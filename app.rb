@@ -18,10 +18,13 @@ end
 
 post("/stylists") do
   new_name = params.fetch("name_input")
-  new_stylist = Stylist.new({:name => new_name})
-  new_stylist.save()
-  @stylists = Stylist.all()
-  erb(:stylists)
+  new_stylist = Stylist.new({:name => new_name, :id => nil})
+  if new_stylist.save()
+    @stylists = Stylist.all()
+    erb(:stylists)
+  else
+    erb(:error_page)
+  end
 end
 
 get("/stylist/:id") do

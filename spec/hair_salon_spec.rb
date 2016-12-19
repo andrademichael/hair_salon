@@ -1,13 +1,20 @@
 require("spec_helper")
 
 RSpec.configure do |config|
-  config.color = true
   config.after(:each) do
     DB.exec("DELETE FROM stylists *;")
   end
 end
 
 describe('Stylist') do
+
+  describe("#id") do
+    it "returns the id of a saved stylist" do
+      test_stylist = Stylist.new({:name => "Tom Jones", :id => nil})
+      test_stylist.save()
+      expect(test_stylist.id()).to(eq(1))
+    end
+  end
 
   describe('.all') do
     it('starts out empty') do

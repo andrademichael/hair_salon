@@ -6,6 +6,10 @@ class Stylist
     @id = nil
   end
 
+  define_method(:id) do
+    @id = DB.exec("SELECT FROM stylists WHERE name = #{@name}")
+  end
+
   define_method(:delete) do |id|
     DB.exec("DELETE FROM stylists WHERE id = #{id};")
   end
@@ -17,8 +21,8 @@ class Stylist
   end
 
   define_method(:save) do
-    result = DB.exec("INSERT INTO stylists (name) VALUES ('#{@name}') RETURNING id;")
-    @id = result.first().fetch("id").to_i()
+    DB.exec("INSERT INTO stylists (name) VALUES ('#{@name}');")
+
   end
 
   define_singleton_method(:all) do
