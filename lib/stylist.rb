@@ -6,8 +6,8 @@ class Stylist
     @id = nil
   end
 
-  define_singleton_method(:delete) do |id|
-    DB.exec("DROP * FROM stylists WHERE id = #{id};")
+  define_method(:delete) do |id|
+    DB.exec("DELETE FROM stylists WHERE id = #{id};")
   end
 
   define_method(:==) do |other|

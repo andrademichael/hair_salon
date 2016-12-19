@@ -1,0 +1,14 @@
+<h3><%= stylist.name() %></h3>
+
+<form action="/stylist/:id" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="stylist_id" value="<% stylist.id() %>">
+  <label for="new_name">Enter a different name for this stylist:</label>
+  <input type="text" name="new_name">
+  <button type="submit">change name</button>
+</form>
+
+<form action="/stylist/:id" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn btn-danger" type="submit">delete stylist</button>
+</form>

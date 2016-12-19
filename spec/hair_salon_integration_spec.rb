@@ -8,4 +8,10 @@ feature("adding a stylist and viewing their unique page") do
     click_on('add stylist')
     expect(page).to have_content("Tom Jones")
   end
+
+  feature("view an individual stylist and update or delete them") do
+    it("allows manager to see the stylist, their clients, and change the stylists name") do
+
+    end
+  end
 end

@@ -24,14 +24,14 @@ post("/stylists") do
   erb(:stylists)
 end
 
-get("/stylists/:id") do
+get("/stylist/:id") do
   @stylist =  Stylist.find(params.fetch("id").to_i())
   @clients = Client.all()
-  erb(:stylist_view)
+  erb(:stylist)
 end
 
 get("/clients/:id") do
   @client = Client.find(params.fetch("id").to_i())
   @stylists = Stylist.all()
-  erb(:client_view)
+  erb(:client)
 end
