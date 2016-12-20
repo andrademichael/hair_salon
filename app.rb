@@ -48,8 +48,8 @@ get("/stylist/:stylist_id/client/:client_id") do
 end
 
 patch("/stylist/:stylist_id/client/:client_id") do
-  client_id = params.fetch("client_id").to_i()
-  @client = Client.find(client_id)
+  @client = Client.find(params.fetch("client_id").to_i())
   @client.update(params.fetch("new_stylist"))
-  erb(:client_success)
+  @stylists = Stylist.all()
+  erb(:stylists)
 end

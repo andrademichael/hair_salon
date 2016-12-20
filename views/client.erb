@@ -4,8 +4,9 @@
 
 <% if @stylists.any? %>
 
-<form action="/stylist/:stylist_id/client/:client_id" method="post">
+<form action="/stylist/<%= @stylist.id() %>/client/<%= @client.id() %>" method="post">
   <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="client_id" value="<%= @client.id() %>">
   <label for="new_name">Enter a new stylist for this client:</label>
   <select type="text" name="new_stylist">
     <% @stylists.each() do |stylist| %>

@@ -40,7 +40,7 @@ class Client
   end
 
   define_method(:update) do |stylist_id|
-    DB.exec("UPDATE clients SET stylist_id = #{stylist_id} WHERE id = #{self.id()} RETURNING")
+    DB.exec("UPDATE clients SET stylist_id = #{stylist_id} WHERE id = #{self.id()} RETURNING stylist_id")
     stylist_id
   end
 end

@@ -51,7 +51,9 @@ describe("Change a clients assigned stylist", :type => :feature) do
     fill_in("new_client_name", :with => "Michael Andrade")
     click_on("add client")
     click_on("Michael Andrade")
-    fill_in("Enter a new stylist for this client:", :with => 1)
-    expect(page).not_to have_content("Michael Andrade")
+    select "Jimmy Johns", :from => "new_stylist"
+    click_on "change stylist"
+    click_on "Jimmy Johns"
+    expect(page).to have_content("Michael Andrade")
   end
 end
