@@ -38,4 +38,9 @@ class Client
     end
     found_client
   end
+
+  define_method(:update) do |stylist_id|
+    DB.exec("UPDATE clients SET stylist_id = #{stylist_id} WHERE id = #{self.id()} RETURNING")
+    stylist_id
+  end
 end

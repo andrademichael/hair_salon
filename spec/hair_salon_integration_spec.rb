@@ -38,3 +38,20 @@ describe("add clients to a stylist and view them individually", :type => :featur
     expect(page).to have_content("Michael Andrade")
   end
 end
+
+describe("Change a clients assigned stylist", :type => :feature) do
+  it("allows manager to assign clients to a stylist") do
+    visit('/')
+    click_on("manage stylists")
+    fill_in('name_input', :with => "Tom Jones")
+    click_on('add stylist')
+    fill_in('name_input', :with => "Jimmy Johns")
+    click_on('add stylist')
+    click_on("Tom Jones")
+    fill_in("new_client_name", :with => "Michael Andrade")
+    click_on("add client")
+    click_on("Michael Andrade")
+    fill_in("Enter a new stylist for this client:", :with => 1)
+    expect(page).not_to have_content("Michael Andrade")
+  end
+end

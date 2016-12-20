@@ -1,11 +1,21 @@
-<h2><%= @client.name() %>'s account'</h2>
+<h2><%= @client.name() %>'s account</h2>
 
 <p><%= @client.name() %> currently owes <em>one million</em> dollars.</p>
 
+<% if @stylists.any? %>
+
 <form action="/stylist/:stylist_id/client/:client_id" method="post">
   <input type="hidden" name="_method" value="patch">
-  <input type="hidden" name="stylist_id" value="<% @stylist.id() %>">
   <label for="new_name">Enter a new stylist for this client:</label>
-  <input type="text" name="new_name">
+  <select type="text" name="new_stylist">
+    <% @stylists.each() do |stylist| %>
+    <option value="<%= stylist.id() %>"> <%= stylist.name() %> </option>
+    <% end %>
+  </select>
+
   <button type="submit">change stylist</button>
 </form>
+
+<% else %>
+<p><%= @stylist.name() %> is the only stylist, maybe hire some more?</p>
+<% end %>
