@@ -1,10 +1,10 @@
 <h3><%= @stylist.name() %></h3>
 
 <% if @clients.any? %>
-  <h3><%= @stylist.name() %>'s clients:'</h3>
+  <h3><%= @stylist.name() %>'s clients:</h3>
   <ul>
     <% @clients.each do |client| %>
-      <li><a href="/client/<%= client.id() %>"><%= client.name() %></a></li>
+      <li><a href="/stylist/<%= @stylist.id() %>/client/<%= client.id() %>"><%= client.name() %></a></li>
     <% end %>
   </ul>
 
@@ -12,7 +12,7 @@
   <p>This stylist currently has no clients</p>
 <% end %>
 
-<form class="well" action="/stylist/:id" method="post">
+<form class="well" action="/stylist/<%= @stylist.id() %>" method="post">
   <input type="hidden" name="stylist_id" value="<%= @stylist.id() %>">
   <label for="new_client_name">Enter new client:</label>
   <input type="text" name="new_client_name">
