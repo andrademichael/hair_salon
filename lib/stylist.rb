@@ -1,24 +1,23 @@
 class Stylist
-  attr_reader(:name, :id)
+  attr_reader :name, :id
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = nil
+    @id = attributes.fetch(:id)
   end
 
-  define_method(:delete) do |id|
-    DB.exec("DELETE FROM stylists WHERE id = #{id};")
+  define_method(:delete) do
+    DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
   end
 
   define_method(:==) do |other|
-    same_class = self.class().eql?(other.class())
     same_name = self.name().eql?(other.name())
-    same_class.&(same_name)
+    same_name
   end
 
   define_method(:save) do
-    DB.exec("INSERT INTO stylists (name) VALUES ('#{@name}');")
-
+    result = DB.exec("INSERT INTO stylists (name) VALUES ('#{self.name}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
   end
 
   define_singleton_method(:all) do
@@ -33,9 +32,21 @@ class Stylist
   end
 
   define_singleton_method(:find) do |id|
-    result = DB.exec("SELECT * FROM stylists WHERE id = #{id};")
-    name = result.first().fetch("name")
-    Stylist.new({:name => name, :id => id})
+    found_stylist = nil
+    Stylist.all().each() do |stylist|
+      if stylist.id() == (id)
+        found_stylist = stylist
+      end
+    end
+    found_stylist
   end
 
+  define_method(:clients) do
+    clients = []
+    returned_clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
+    returned_clients.each do |client|
+      clients.push(Client.new({:name => name, :id => id, :stylist_id => stylist_id}))
+    end
+    clients
+  end
 end

@@ -1,18 +1,20 @@
 class Client
-  attr_reader(:name, :stylist_id)
+  attr_reader(:name, :stylist_id, :id)
 
-  define_method(:initialize) do |name|
-    @name = name
+  define_method(:initialize) do |attributes|
+    @name = attributes.fetch("name")
+    @id = attributes[:id]
+    @stylist_id = attributes[:stylist_id]
   end
 
   define_method(:==) do |other|
-    same_class = self.class().eql?(other.class())
+    same_id = self.id().eql?(other.id())
     same_name = self.name().eql?(other.name())
-    same_class.&(same_name)
+    same_id.&(same_name)
   end
 
   define_method(:save) do
-    @@clients.push(self)
+    DB.exec('INSERT INTO clients (name, id, stylist_id) VALUES ("#{@name}", "#{@id}", "{@stylist_id}") RETURNING id;')
   end
 
 end

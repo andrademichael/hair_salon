@@ -1,34 +1,10 @@
 require("spec_helper")
 
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM stylists *;")
-  end
-end
-
 describe('Stylist') do
-
-  describe("#id") do
-    it "returns the id of a saved stylist" do
-      test_stylist = Stylist.new({:name => "Tom Jones", :id => nil})
-      test_stylist.save()
-      expect(test_stylist.id()).to(eq(1))
-    end
-  end
 
   describe('.all') do
     it('starts out empty') do
       expect(Stylist.all()).to(eq([]))
-    end
-  end
-
-  describe(".find") do
-    it("returns a stylist with matching ID") do
-      test_stylist = Stylist.new({:name => "Tom Jones", :id => nil})
-      test_stylist.save()
-      test_stylist2 = Stylist.new({:name => "Bonnie Rait", :id => nil})
-      test_stylist2.save()
-      expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
     end
   end
 
@@ -50,11 +26,23 @@ describe('Stylist') do
     end
   end
 
+  describe(".find") do
+    it("returns a stylist with matching ID") do
+      test_stylist = Stylist.new({:name => "Tom Jones", :id => nil})
+      test_stylist.save()
+      p test_stylist.id()
+      test_stylist2 = Stylist.new({:name => "Bonnie Rait", :id => nil})
+      test_stylist2.save()
+      expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
+    end
+  end
+
+
   describe("#delete") do
     it "removes a stylist from the database" do
       test_stylist = Stylist.new({:name => "Tom Jones", :id => nil})
       test_stylist.save()
-      test_stylist.delete(test_stylist.id())
+      test_stylist.delete()
       expect(Stylist.all()).to(eq([]))
     end
   end
