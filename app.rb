@@ -63,3 +63,11 @@ patch("/stylist/:stylist_id/client/:client_id") do
   @stylists = Stylist.all()
   erb(:client_success)
 end
+
+delete("/stylist/:stylist_id/client/:client_id") do
+  doomed_client = Client.find(params.fetch("client_id").to_i())
+  doomed_client.delete()
+  @stylist = Stylist.find(params.fetch("stylist_id"))
+  @stylists = Stylist.all()
+  erb(:stylist)
+end

@@ -20,3 +20,8 @@
 <% else %>
 <p><%= @stylist.name() %> is the only stylist, maybe hire some more?</p>
 <% end %>
+
+<form action="/stylist/<%= @stylist.id() %>/client/<%= @client.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button class="btn btn-danger" type="submit">delete client</button>
+</form>

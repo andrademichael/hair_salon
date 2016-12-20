@@ -4,7 +4,9 @@
   <h3><%= @stylist.name() %>'s clients:</h3>
   <ul>
     <% @clients.each do |client| %>
-      <li><a href="/stylist/<%= @stylist.id() %>/client/<%= client.id() %>"><%= client.name() %></a></li>
+      <li>
+        <a href="/stylist/<%= @stylist.id() %>/client/<%= client.id() %>"><%= client.name() %></a>
+      </li>
     <% end %>
   </ul>
 
