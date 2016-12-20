@@ -1,0 +1,11 @@
+<h2><%= @client.name() %>'s account'</h2>
+
+<p><%= @client.name() %> currently owes <em>one million</em> dollars.</p>
+
+<form action="/client/:id" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="stylist_id" value="<% @stylist.id() %>">
+  <label for="new_name">Enter a new stylist for this client:</label>
+  <input type="text" name="new_name">
+  <button type="submit">change stylist</button>
+</form>
