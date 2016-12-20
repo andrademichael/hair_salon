@@ -1,6 +1,8 @@
-require("spec_helper")
-
-DB = PG.connect({:dbname => 'hair_salon_test'})
+require('spec_helper')
+require('capybara/rspec')
+require('./app')
+Capybara.app = Sinatra::Application
+set(:show_exceptions, false)
 
 describe("adding a stylist and viewing their unique page", :type => :feature) do
   it("allows a manager to view all stylists and add new ones") do
