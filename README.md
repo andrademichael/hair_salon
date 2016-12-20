@@ -6,7 +6,7 @@
 
 ## Description
 
-Description text
+A web app which allows the user to manage a list of contractors and their clients. The user may create and delete entries for each contractor and client, and update which clients are assigned to each contractor.
 
 ## Setup/Installation Requirements
 
@@ -54,7 +54,7 @@ For questions, ideas, or concerns, email me with the subject line "Github"!
 
 ## Technologies Used
 
-Backend written in Ruby, with PostgreSQL database and Javascript frontend.
+Backend written in Ruby, with PostgreSQL database and Extended Ruby frontend.
 
 ### License
 

@@ -33,7 +33,7 @@ get("/stylist/:id") do
   erb(:stylist)
 end
 
-get("/clients/:id") do
+get("/client/:id") do
   @client = Client.find(params.fetch("id").to_i())
   @stylists = Stylist.all()
   erb(:client)

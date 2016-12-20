@@ -6,10 +6,6 @@ class Stylist
     @id = nil
   end
 
-  define_method(:id) do
-    @id = DB.exec("SELECT FROM stylists WHERE name = #{@name}")
-  end
-
   define_method(:delete) do |id|
     DB.exec("DELETE FROM stylists WHERE id = #{id};")
   end
