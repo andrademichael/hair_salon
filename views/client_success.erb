@@ -1,1 +1,4 @@
 <h2><%= @client.name() %> has been transferred to <%= @stylist.name() %>.</h2>
+
+<a href="/stylists">View Stylists</a>
+<a href="/stylist/<%= @stylist.id() %>">Go back to <%= @stylist.name() %>'s page</a>

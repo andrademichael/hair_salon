@@ -7,7 +7,8 @@ require("pg")
 
 
 get("/") do
-  erb(:index)
+  @stylists = Stylist.all()
+  erb(:stylists)
 end
 
 get("/stylists") do
@@ -40,16 +41,25 @@ post("/stylist/:id") do
   erb(:stylist)
 end
 
+delete("/stylist/:id") do
+  doomed_stylist = Stylist.find(params.fetch("id").to_i())
+  doomed_stylist.delete()
+  @stylists = Stylist.all()
+  erb(:stylists)
+end
+
 get("/stylist/:stylist_id/client/:client_id") do
   @client = Client.find(params.fetch("client_id").to_i())
   @stylist = Stylist.find(params.fetch("stylist_id").to_i())
   @stylists = Stylist.all()
   erb(:client)
 end
-
+#
 patch("/stylist/:stylist_id/client/:client_id") do
   @client = Client.find(params.fetch("client_id").to_i())
   @client.update(params.fetch("new_stylist"))
+  @old_stylist = Stylist.find(params.fetch("stylist_id").to_i())
+  @new_stylist = Stylist.find(params.fetch("new_stylist").to_i())
   @stylists = Stylist.all()
-  erb(:stylists)
+  erb(:client_success)
 end
