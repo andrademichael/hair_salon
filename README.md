@@ -10,19 +10,7 @@ A web app which allows the user to manage a list of contractors and their client
 
 ## Setup/Installation Requirements
 
-The following user stories should be completed:
-
-As a salon owner, I want to view, add, update and delete stylists.
-As a salon owner, I want to view, add, update and delete clients.
-As a salon owner, I want to add clients to a stylist.
-Additional Requirements
-For this code review, please use the following names for your databases:
-
-Production Database: hair_salon
-Development Database: hair_salon_test
-Resource names will be clients and stylists
-
-In your README, include database setup instructions with your database names and tables for (see example for 'To Do' application below):
+Database Setup:
 
 In PSQL:
 
@@ -31,22 +19,9 @@ CREATE TABLE stylists (id serial PRIMARY KEY, name varchar);
 CREATE TABLE clients (id serial PRIMARY KEY, name varchar, stylist_id integer);
 
 
-
-Objectives
-Your code will be reviewed for the following objectives:
-
-Use of standard naming conventions for database tables and columns.
-Correct set up of a one-to-many relationship.
-Execution of CRUD functionality in class methods and routes.
-Use of RESTful routes.
-All previous code standards met. (Except you are not required to deploy to Heroku this week.)
-Required functionality was in place by the 5:00pm Friday deadline.
-Project is in a polished, portfolio-quality state.
-Project demonstrates an understanding of this week's concepts. If prompted, you can discuss your code with an instructor using correct terminology.
-Submission
 ## Known Bugs
 
-No known bugs... yet.
+There is no way for the user to differentiate between two stylists or clients with identical names, except their order in lists.
 
 ## Support and contact details
 
