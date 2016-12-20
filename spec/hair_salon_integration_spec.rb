@@ -13,15 +13,14 @@ describe("adding a stylist and viewing their unique page", :type => :feature) do
     expect(page).to have_content("Tom Jones")
   end
 end
-describe("view an individual stylist and update or delete them") do
+
+describe("view an individual stylist and update or delete them", :type => :feature) do
   it("allows manager to see the stylist, their clients, and change the stylists name") do
     visit('/')
     click_on("manage stylists")
     fill_in('name_input', :with => "Tom Jones")
     click_on('add stylist')
     click_on("Tom Jones")
-    fill_in("new_name", :with => "Tim Johns")
-    click_on("delete stylist")
-    expect(page).to have_content("Tim Johns")
+    expect(page).to have_content("Tom Jones")
   end
 end

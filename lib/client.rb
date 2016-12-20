@@ -3,14 +3,13 @@ class Client
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes[:id]
-    @stylist_id = attributes[:stylist_id]
+    @id = attributes.fetch(:id)
+    @stylist_id = attributes.fetch(:stylist_id)
   end
 
   define_method(:==) do |other|
-    same_id = self.id().eql?(other.id())
     same_name = self.name().eql?(other.name())
-    same_id.&(same_name)
+    same_name
   end
 
   define_method(:save) do

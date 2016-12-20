@@ -45,6 +45,9 @@ class Stylist
     clients = []
     returned_clients = DB.exec("SELECT * FROM clients WHERE stylist_id = #{self.id()};")
     returned_clients.each do |client|
+      name = client.fetch("name")
+      id = client.fetch("id")
+      stylist_id = client.fetch("stylist_id")
       clients.push(Client.new({:name => name, :id => id, :stylist_id => stylist_id}))
     end
     clients
