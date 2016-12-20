@@ -13,6 +13,7 @@
 <% end %>
 
 <form class="well" action="/stylist/:id" method="post">
+  <input type="hidden" name="stylist_id" value="<%= @stylist.id() %>">
   <label for="new_client_name">Enter new client:</label>
   <input type="text" name="new_client_name">
   <button type="submit">add client</button>

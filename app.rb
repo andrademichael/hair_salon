@@ -34,7 +34,9 @@ end
 
 post("/stylist/:id") do
   @stylist = Stylist.find(params.fetch("id").to_i())
-  new_client = Client.new({:name => params.fetch("new_client_name"), :id => nil, :stylist_id => @stylist.id()})
+  name = params.fetch("new_client_name")
+  stylist_id = params.fetch("stylist_id")
+  new_client = Client.new({:name => name, :id => nil, :stylist_id => stylist_id})
   new_client.save()
   @clients = @stylist.clients
   erb(:stylist)

@@ -14,6 +14,7 @@ class Client
 
   define_method(:save) do
     DB.exec("INSERT INTO clients (name, stylist_id) VALUES ('#{@name}', #{@stylist_id}) RETURNING id;")
+    @id = id
   end
 
   define_singleton_method(:all) do
